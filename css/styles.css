@@ -1,0 +1,606 @@
+ 
+
+/************************************/
+/***** 	   01. General css		 ****/
+/************************************/
+
+body{
+	font-size: 16px;
+	font-family: 'Rubik', sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	margin-top:0;
+	font-weight: 500;
+}
+
+img{
+	max-width: 100%;
+}
+
+a:hover{
+	text-decoration: none;
+	outline: 0;
+}
+
+a:focus{
+	text-decoration: none;
+	outline: 0;
+}
+
+.preloader{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	background: #0672b6;
+	z-index: 9999;
+}
+
+.loader{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	position: relative;
+	border: 4px solid #Fff;
+	top: calc(50% - 15px);
+	animation: loader 2s infinite ease;
+}
+
+.loader-inner{
+	vertical-align: top;
+	display: inline-block;
+	width: 100%;
+	background-color: #fff;
+	animation: loader-inner 2s infinite ease-in;
+}
+
+
+
+
+
+
+
+.size_11 {
+	font-size: 11px;
+}
+
+.btn-custom{
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 500;
+	padding: 10px 30px;
+	text-align: center;
+	color: #ff2938;
+	background: #fff;
+	border: 2px solid #fff;
+	border-radius: 26px;
+	transition: all 0.3s;
+}
+
+.btn-custom:hover{
+	background: none;
+	color: #fff;
+}
+
+.customers_image {
+	margin: 0 auto 60px;
+	display:block;
+}
+.mob {
+	display: none !important;
+}
+/************************************/
+/***** 02. Navigation area css  *****/
+/************************************/
+
+
+
+
+
+
+
+/************************************/
+/*****   03. Slider area css    *****/
+/************************************/
+
+
+
+
+
+
+
+.btn-booknow{
+	display: inline-block;
+	background: #ff0e17;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 10px 30px 8px;
+	border: 2px solid #014a8f;
+	border-radius: 40px; 
+	margin-top: 20px;
+	transition: all 0.3s ease-in-out;
+	text-align:center;
+ 	
+	position: relative;
+}
+
+.btn-booknow:hover{
+	background: none;
+	color: #014a8f;
+	font-weight: bold;
+	border-radius: 40px;
+}
+
+
+
+
+/****************************************/
+/***** 06. Related Product area css *****/
+/****************************************/
+.boxes {
+	display: flex;
+	justify-content: center;
+
+}
+
+.anchor {
+	display: block;
+    position: relative;
+    top: -87px;
+    visibility: hidden;
+}
+.related-product{
+	padding: 80px 0;
+	 
+}
+
+.related-single{
+	margin-bottom: 80px;
+}
+
+.related-product-info{
+	padding-top: 30px;
+}
+
+.related-product-info h3{
+	font-size: 35px;
+	color: #464646;
+	font-weight: 700;
+	margin-bottom: 1em;
+}
+
+.related-product-info p{
+	font-size: 14px;
+	color: #818282;
+	font-weight: 300;
+	margin-bottom: 1.5em;
+}
+
+.related-product-info .btn-booknow{
+	margin-top: 10px;
+	z-index: 2;
+}
+
+
+/****************************************/
+/*****   07. Testimonial area css   *****/
+/****************************************/
+
+
+
+/****************************************/
+/*****     08. Product area css     *****/
+/****************************************/
+
+.old_price {
+	color: #FF084A !important;
+	text-decoration:line-through;
+}
+
+.new_price {
+	color:#038173 !important;
+	font-size: 22px !important;
+}
+
+.products {
+	/*background:#f2f6f6;*/
+	padding:20px 0;
+}
+
+.row.no-gutters {
+   margin-right: 0;
+   margin-left: 70;
+}
+
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+   padding-right: 0;
+   padding-left: 0;
+}
+
+.products .container-fluid{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+.product-single{
+	position: relative;
+	margin: 0 10px;
+	text-align:center;
+	background: #d9f6fd;
+	border-radius: 20px ;
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    /*background: url(../images/blue-divider.png) no-repeat bottom center;*/
+}
+
+.section-title h2 {
+    font-size: 40px;
+    color: #464646;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.selectedBox, .product-single:hover  {
+	-webkit-box-shadow: 13px 13px 12px -8px rgba(8,126,181,0.41);
+	-moz-box-shadow: 13px 13px 12px -8px rgba(8,126,181,0.41);
+	box-shadow: 13px 13px 12px -8px rgba(8,126,181,0.41);
+	background:#cfeaea;
+	transition: all 0.3s ease-in-out;
+	border-radius: 20px;
+	cursor:pointer;
+}
+
+
+.product-image{
+	position: relative;
+	max-width:360px;
+	display:block;
+	margin:0 auto;
+}
+
+.product-image img{
+	width: 80%;
+	border-radius: 15px;
+}
+
+
+.product-info {
+ 
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 10px;
+	transition: all 0.3s ease-in-out;
+	text-align: center;
+	 
+	border-radius: 0 0 20px 20px;
+}
+.product-info h3{
+	color: #000;
+	font-size: 26px;
+	margin-bottom: 4px;
+}
+
+.product-info p{
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 0;
+}
+
+.product-info p span{
+	color: #ffc600;
+}
+
+.product-info .btn-booknow{
+	padding: 6px 20px 5px;
+	font-size: 16px;
+	margin-top: 8px;
+ 	
+}
+
+
+.btn-booknow:first-letter {
+	text-transform:uppercase;
+}
+
+
+.product-single:hover .product-info, .selectedBox .product-info {
+	padding-top: 50px;
+}
+
+.save { 
+	padding: 9px;
+	border-radius: 20px 20px 0 0;
+	color: #FFF;
+	background: #038173;
+	/*background: -moz-linear-gradient(top, #01a2e0 0%, #105888 100%);
+	background: -webkit-linear-gradient(top, #01a2e0 0%,#105888 100%);
+	background: linear-gradient(to bottom, #01a2e0 0%,#105888 100%);*/
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01a2e0', endColorstr='#105888',GradientType=0 );
+}
+
+
+
+
+/************************************/
+/*****    12. Media Screens     *****/
+/************************************/
+
+@media only screen and (max-width: 1200px){
+	.navbar-default .navbar-nav>li>a:after{
+		padding: 0 12px 0 14px;
+	}
+
+	nav.navbar.bootsnav ul.nav > li > a{
+	font-size: 14px;
+	}
+	
+	nav.navbar.bootsnav.sticky-header .navbar-brand,
+	nav.navbar.bootsnav .navbar-brand{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	
+	nav.navbar.bootsnav .navbar-toggle{
+		right: 15px;
+	}
+	
+	nav.navbar.bootsnav .navbar-collapse{
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	
+	.row.no-gutters {
+   margin-right: 0;
+   margin-left: 00;
+}
+}
+
+@media only screen and (max-width: 991px){
+
+	.section-title h2 {
+    font-size: 34px;
+}
+	
+	.ways_box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.ways_box img {
+	max-width: 80px;
+}
+.ways_box p {
+	    width: 100%;
+	max-width: 200px;
+    padding: 0 5px;
+    font-size: 14px;
+    line-height: 1;
+
+	 
+}
+.padding div.col-md-6:first-child, .padding div.col-md-6:last-child  {
+	padding:0 !important;
+}
+
+	
+	
+	.mob  {
+		display: block !important;
+	}
+	.desk {
+		display: none;
+	}
+	.header-bullets  {
+		height: auto;
+		max-width: 380px;
+		margin: 0 auto;
+		text-align: left;
+	}
+	
+	.customers_image {
+		max-width: 640px;
+		margin: 0 auto 20px;
+		width: 100%;
+	}
+	
+	 
+	
+
+	
+	
+	
+	
+}
+
+/* Mobile Layout */
+@media only screen and (max-width: 767px){
+	
+	.section-title h2 {
+    font-size: 24px;
+}
+	
+	
+	.slider-image{
+		text-align: center;
+		 
+	}
+	
+	.slider-image img {
+		max-width:40%;
+	}
+	
+	
+	
+	.second_head {
+		font-size:18px !important;
+	}
+	
+	
+	
+	.banner{
+		padding: 60px 0 60px;
+	}
+	
+	
+	
+	.aboutus,
+	.related-product,
+	.testimonial,
+	.contactus,
+	footer{
+		padding: 60px 0;
+	}
+	
+	.aboutus .section-title {
+		text-align:center;
+		/*background: url(../images/blue-divider.png) no-repeat bottom center;*/
+	}
+	
+	
+	.features{
+		padding: 60px 0 30px;
+	}
+	
+	.about-image{
+		text-align: center;
+	}
+	
+	.features-image{
+		margin-bottom: 40px;
+	}
+	
+	.feature-single{
+		margin-bottom: 30px;
+	}
+	
+	.feature-single h3{
+		font-size: 60px;
+	}
+	
+	.related-product-info{
+		margin-bottom: 40px;
+	}
+	
+	.related-product-image{
+		text-align: center;
+	}
+	
+	.related-product-info h3{
+		font-size: 24px;
+	}
+	
+	.product-single {
+		margin: 20px 10px;
+}
+
+.bg-7 {
+    background-image: url(../images/line.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80px;
+    width: 102%;
+}
+}
+
+/* Small Mobile Layout */
+	
+@media only screen and (max-width: 640px) {	
+	
+	
+	.product-info h3 {
+		font-size: 20px;
+		min-height: 70px;
+	}
+	
+	.product-single:hover .product-info, .selectedBox .product-info {
+		padding-top:10px !important;
+	}
+	.product-info p {
+		font-size: 16px;
+	}
+	
+}
+
+@media only screen and (max-width: 480px) {
+	
+	
+	.product-single {
+		margin: 20px 5px;
+	}
+	.product-info button {
+		font-size: 9px !important;
+	}
+	
+	.row.no-gutters {
+    margin-right: 0;
+    margin-left: 00;
+    margin: -15px;
+}
+}
+
+@media only screen and (max-width: 415px) {
+
+	
+
+	.product-single {
+		width: 32%;
+	}
+	
+	.product-info, .product-info p, .save {
+		font-size: 12px !important;
+	}
+	.product-info h3, .new_price {
+	    font-size: 19px !important;
+	}
+	
+	
+	.product-info h3 {
+		min-height: 20px;
+	}
+	
+
+	.product-info .btn-booknow {
+		padding: 7px 6px 6px;
+	}
+	
+		.product-info button {
+		font-size: 11px !important;
+	}
+}
+
+@media only screen and (max-width: 370px) {
+	 
+	
+	.product-info, .product-info p, .save {
+		font-size: 12px !important;
+	}
+	.product-info h3, .new_price {
+	    font-size: 19px !important;
+	}
+	
+	.product-info button {
+		font-size: 11px !important;
+	}
+	
+	 
+}

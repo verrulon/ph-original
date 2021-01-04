@@ -1,0 +1,122 @@
+
+.wrapper-rev {
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 1800px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.pic-rev{
+    width: 300px;
+}
+
+.wrapper-rev {padding: 3px;}
+
+.slider-item div, .slider-item img,.slider-item1 div, .slider-item1 img{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.section_02 .wrapper-rev {
+    margin: 10px auto;
+	background-color: #fff;
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 2px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 2px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.slider-cont,.slider-cont-mob {
+    position: relative;
+    max-width: 1900px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    /*background: #878945;*/
+   /* z-index: 99;*/
+}
+.slider-item,.slider-item1 {
+    position: relative;
+    float: left;
+    text-align: center;
+}
+.slider-item div, .slider-item img, {vertical-align: middle;}
+.slider-item img {border-radius: 10px;}
+.slider-item:focus {border: none;}
+.slider-item div {
+    width: 65%;
+    margin: 0 10px;
+}
+.slider-item p {
+    text-align: justify;
+    line-height: 23px;
+    font-size: 15px;
+}
+.slider-item p:nth-child(2) {
+    text-align: right;
+    font-weight: bold;
+}
+.arrow {
+    position: absolute;
+    top: 50%;
+    width: 33px;
+    height: 45px;
+   /* z-index: 99;*/
+    cursor: pointer;
+}
+.arrow:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+    filter: alpha(opacity=75);
+    -moz-opacity: 0.75;
+    -khtml-opacity: 0.75;
+    opacity: 0.75;
+}
+.arrow-left {
+    left: 5px;
+    background: url("../images/left_arrow.png") 0 0 no-repeat;
+}
+.arrow-right {
+    right: 5px;
+    background: url("../images/right_arrow.png") 0 0 no-repeat;
+}
+
+.justify{
+    text-align: justify;
+}
+
+@media screen and (max-width: 1250px){
+     .pic-rev{
+    width: 230px;
+}
+}
+
+@media screen and (max-width: 1000px){
+    .pic-rev{
+    width: 170px;
+}
+}
+
+@media screen and (max-width: 746px) {
+   
+   
+    .slider-item img {width: 200px;}
+    .slider-item div {width: 90%;}
+}
+@media screen and (max-width: 718px) {
+    .section_01 .wrapper {
+        display: flex;
+        flex-direction: column;        
+    }
+   
+@media screen and (max-width: 619px) {
+   
+   
+    .arrow {top: 50%;}
+}
+
+
+
+
+
+

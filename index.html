@@ -1,0 +1,1352 @@
+<html lang="en">
+
+<head>
+
+<script src="js/jquery.min.js"></script>
+
+    <script>
+    function set_validator_errors(){
+        orderValidator.errorTitle = 'Please correct the following errors'; 
+
+        orderValidator.errorNameField = 'Your Name'; 
+        orderValidator.errorNameMess = 'Enter your name'; 
+        
+        orderValidator.errorPhoneField = 'Your phone'; 
+        orderValidator.errorPhoneMess = 'Enter the correct phone number'; 
+        
+        orderValidator.errorAddress = 'Enter the correct address'; 
+        orderValidator.errorRequired = 'required field'; 
+        orderValidator.errorMaxLength = 'valid maximum {1} character'; 
+        orderValidator.errorMinLength = 'valid minimum {1} character'; 
+        orderValidator.errorEmailField = 'E-mail';
+        orderValidator.errorEmail = 'Invalid email specified';
+        }
+    </script>
+    
+<script>
+
+
+window.app = {
+    timestamp: parseInt((new Date()).getTime() / 1000),
+    jq: jQuery,
+    formAction: window.location.href,
+    leadToken: '5ff26b8deb7084.97000322',
+    offers: {"21373":{"price":"1890","id":21373,"prepaid_info_html":"","delivery_price":"","currency":{"code":"PHP","name":"\u20b1"},"link":"","price2":"3780","product_sku":"","country":{"code":"PH","name":"\u0424\u0438\u043b\u0438\u043f\u043f\u0438\u043d\u044b"},"discount":""}},
+    currentOffer: {"price":"1890","id":21373,"prepaid_info_html":"","delivery_price":"","currency":{"code":"PHP","name":"\u20b1"},"link":"","price2":"3780","product_sku":"","country":{"code":"PH","name":"\u0424\u0438\u043b\u0438\u043f\u043f\u0438\u043d\u044b"},"discount":""},
+    allowedCountries: ["PH"],
+    _setOfferId: false,
+    
+    setOffer: function (offerId) {
+        if (offerId == this._setOfferId) {
+            return ;
+        }
+        this._setOfferId = offerId;
+        if (offerId) {
+            var offer = app.offers[offerId];
+            var previousOffer = app.currentOffer;
+            app.currentOffer = offer;
+            var event = this.jq.Event("offerchange");
+            event.previousOffer = previousOffer;
+            event.currentOffer = app.currentOffer;
+            this.jq(document).trigger(event);
+            this.updatePage(offer);
+        } else {
+            $('input[name=country]').val('');
+        }
+    },
+    
+    updatePage: function(offer) {
+        $('x-newprice').html(offer.price);
+        $('x-oldprice').html(offer.price2);
+        $('x-currency').html(offer.currency.name);
+        $('input[name=offer], select[name=offer]').val(offer.id);
+        $('input[name=country]').val(offer.country.code);
+    },
+
+    blockForm: function() {
+        // Блокируем кнопки при отправке формы
+        $('input[type=submit]', $(this)).prop( 'disabled', true ).attr( 'disabled', true );
+        $('button', $(this)).prop( 'disabled', true ).attr( 'disabled', true );
+        app.incompleteOrder.lock = true;
+        clearTimeout(app.incompleteOrder.timer);
+    },
+
+    unblockForm: function() {
+        $('input[type=submit]', $(this)).prop( 'disabled', false ).attr( 'disabled', false );
+        $('button[type=submit]', $(this)).prop( 'disabled', false ).attr( 'disabled', false );
+        app.incompleteOrder.lock = false;
+        clearTimeout(app.incompleteOrder.timer);
+    }
+
+};
+
+
+</script><script src="js/form.validate.js"></script>
+<script src="js/form.incomplete.js"></script>
+<script src="js/main2.js"></script>
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style-review.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/main_1.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/style-form1.css">
+  <link rel="stylesheet" type="text/cvitamss" href="css/styles2.css">
+  <link href="css/css.css" rel="stylesheet">
+  <title>VERRULON – Skin Tag and Mole Remover Cream</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/timer.js"></script>
+  <script type="text/javascript">
+    function time(day) {
+      let currentDate = new Date();
+      let time_day_before = new Date(currentDate.getTime() - day * 86400000);
+
+      var options = {
+
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      };
+
+      return document.write(time_day_before.toLocaleDateString("en", options));
+    }
+  </script>
+
+</head>
+
+<body>
+
+
+  <nav class="fixed-top dnone-nav" style="background:linear-gradient(90deg, #fdf3cf1f 30%, #fdf3cf 60%);">
+
+    <div class="move-nav" style="">
+      <a class="nav-size color-orange proximanova" href="#home">HOME</a>
+      <a class="nav-size color-orange proximanova" href="#about">ABOUT</a>
+      <a class="nav-size color-orange proximanova" href="#works">HOW IT WORKS</a>
+      <a class="nav-size color-orange proximanova" href="#reviews">REVIEWS</a>
+
+      <a class="btn blob proximanova" style="border:1px solid white;background: red;font-size: 20px; font-family: 'Montserrat'" href="#order">Order
+        Now</a>
+    </div>
+
+  </nav>
+
+
+
+
+  <section id="home" class="dnone bg-1">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-6">
+
+          <div class="style-prod1" style="">
+            <img src="images/prod1.png" alt="" width="">
+            <span class="text-prod1" style="">
+              <x-newprice>1890</x-newprice> <x-currency>₱</x-currency> </span>
+          </div>
+
+        </div>
+
+        <div class="col-xl-3">
+
+          <p class="section1-col1" style=""><img src="images/logo2.png" alt="" width=""><br>
+            <span class="section1-col1-2" style="">
+              SKIN TAG AND MOLE<br> REMOVER CREAM</span>
+            </p><p>
+
+              </p><p class="section1-col2" style=""><img src="images/bgr2.png" alt="" width="70px">
+                <span class="section1-col2-2" style="">
+                  OIL TEA <br> TREE LEAF</span>
+                </p><p>
+
+
+                  </p><p class="section1-btn" style="">
+                    <a class="btn-orange proximanova" style="color:white" href="#order">BUY NOW</a>
+                    </p><p>
+
+
+        </p></div>
+
+        <div class="col-xl-3">
+          <p class="section1-col4" style=""><img src="images/bgr3.png" alt="" width="170px">
+            <span class="section1-col4-1" style="">
+              LIGHT TEXTURE</span>
+            </p><p>
+        </p></div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+  <section style="margin-top: -15px" class="bg-2 dnone">
+    <div style="  float: right; margin-top: 30px;">
+      <img class="icons2" src="images/icons2.png" width="">
+      <img class="icons3" style="margin-left: 50px;" src="images/icons3.png" width="">
+    </div>
+  </section>
+
+
+
+ 
+
+
+  <section id="about" style="" class="bg-6 dnone">
+    <div class="container-fluid">
+      <div style="flex-wrap: nowrap;" class="row">
+
+        <div class="">
+          <h2 class="text-black proximanova  center h2-s3">What is Skin Tag</h2>
+          <hr class="section4-hr" style="" size="10" color="black" width="400px">
+          <div style="" class="row section5-div">
+            <p class="section4-1" style=""><img src="images/papi1.png" alt="" width="80%">
+              <span class="section4-11" style="">
+                Light Moles</span>
+              </p><p class="section4-2" style=""><img src="images/papi2.png" alt="" width="80%">
+                <span class="section4-22" style="">
+                  Dark Skin Tags</span>
+                </p><p class="section4-3" style=""><img src="images/papi3.png" alt="" width="80%">
+                  <span class="section4-33" style="">
+                    Flat Moles</span>
+                  </p><p class="section4-4" style=""><img src="images/papi4.png" alt="" width="80%">
+                    <span class="section4-44" style="">
+                      Skin Tags</span>
+                    </p><p class="section4-5" style=""><img src="images/papi5.png" alt="" width="80%">
+                      <span class="section4-55" style="">
+                        Raised Moles</span>
+          </p></div>
+
+          <div class="p-s3">
+            <p class="text-black proximanova  justify section4-text">Papillomas, warts, nevuses, or as people often call
+              them moles, skin tags and other skin defects are constant companions of humans. Throughout life, our skin
+              is tested for strength and there are few people who would not have a single flaw on their bodies.</p><br>
+            <p class="text-black proximanova  justify section4-text">The appearance of the formations may be different,
+              but one thing is common: in addition to physical inconvenience and, possibly, pain, skin tags and moles
+              can cause an inferiority complex and undermine self-confidence so that psychological assistance is
+              required.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 50px;" id="works" class="dnone">
+    <div class="container-fluid">
+      <h2 class="proximanova center section5-text1" style="">The secret is in the ingredients!</h2>
+      <h2 class="proximanova center section5-text2" style="">Verrulon represents a unique combination of natural herbs
+        and essential oils, carefully selected from our experts that successfully copes with the formation of warts,
+        papillomas and skin tags. </h2><br>
+
+
+      <div style="" class="row section5-div2">
+
+        <div class="col-6 col-md-4 center">
+          <div class="ingredient-item" data-toggle="collapse" data-target="#teatreeoil" aria-expanded="false" aria-controls="teatreeoil"><img src="images/ing1.jpg" alt="" width="65%">
+            <p style="font-size:28px;" class="text-center futura-std-medium fa proximanova">Tea Tree Oil</p>
+            <i class="fa fa-plus plus-fa"></i>
+            <span class="plus-icon"></span>
+          </div>
+          <div class="collapse" id="teatreeoil">
+            <div class="card card-body">
+              <p class="futura-std-medium proximanova">
+                It has been confirmed that tea tree leaf oil inhibits the multiplication of many types of fungal
+                infections. In the world there are practically no disinfectants with such a wide spectrum of action -
+                therefore, tea tree oil is very actively used in cosmetology.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 center">
+          <div class="ingredient-item" data-toggle="collapse" data-target="#birchextract" aria-expanded="false" aria-controls="birchextract"><img src="images/ing4.jpg" alt="" width="90%">
+            <p style="font-size:28px;" class="text-center futura-std-medium fa proximanova">Birch Extract</p>
+            <i class="fa fa-plus plus-fa"></i>
+            <span class="plus-icon"></span>
+          </div>
+          <div class="collapse" id="birchextract">
+            <div class="card card-body">
+              <p class="futura-std-medium proximanova">
+                Birch extract has antiseptic, antifungal properties, act on helminths, trichomonads and giardia. .
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-6 col-md-4 center">
+          <div class="ingredient-item" data-toggle="collapse" data-target="#juniperwoodoil" aria-expanded="false" aria-controls="juniperwoodoil"><img src="images/ing2.jpg" alt="" width="100%">
+            <p style="font-size:28px;" class="text-center futura-std-medium fa proximanova">Juniper Wood Oil</p>
+            <i class="fa fa-plus plus-fa"></i>
+            <span class="plus-icon"></span>
+          </div>
+          <div class="collapse" id="juniperwoodoil">
+            <div class="card card-body">
+              <p class="futura-std-medium proximanova">
+                Juniper wood oil copes with almost all skin diseases, manifesting itself as a unique remedy for various
+                types of eczema, papillomas, warts and skin tags.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 center">
+          <div class="ingredient-item" data-toggle="collapse" data-target="#calamintha" aria-expanded="false" aria-controls="calamintha"><img src="images/ing5.jpg" alt="" width="75%">
+            <p style="font-size:28px;" class="text-center futura-std-medium fa proximanova">Calamintha</p>
+            <i class="fa fa-plus plus-fa"></i>
+            <span class="plus-icon"></span>
+          </div>
+          <div class="collapse" id="calamintha">
+            <div class="card card-body">
+              <p class="futura-std-medium proximanova">
+                Calamintha - contains lentinan, this herb is used for treating skin tags and other skin imperfections.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="col-6 col-md-4 center">
+          <div class="ingredient-item" data-toggle="collapse" data-target="#chelidoniummajus" aria-expanded="false" aria-controls="chelidoniummajus"><img src="images/ing3.jpg" alt="" width="100%">
+            <p style="font-size:28px;" class="text-center futura-std-medium fa proximanova">Chelidonium Majus</p>
+            <i class="fa fa-plus plus-fa"></i>
+            <span class="plus-icon"></span>
+          </div>
+          <div class="collapse" id="chelidoniummajus">
+            <div class="card card-body">
+              <p class="futura-std-medium proximanova">
+                Chelidonium Majus has long been known for its great effect in removing papillomas, warts and skin tags.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 center">
+          <div class="ingredient-item" data-toggle="collapse" data-target="#hederahelix" aria-expanded="false" aria-controls="hederahelix"><img width="75%" src="images/ing6.jpg" alt="">
+            <p style="font-size:28px;" class="text-center futura-std-medium fa proximanova">Hedera Helix</p>
+            <i class="fa fa-plus plus-fa"></i>
+            <span class="plus-icon"></span>
+          </div>
+          <div class="collapse" id="hederahelix">
+            <div class="card card-body">
+              <p class="futura-std-medium proximanova">
+                Hedera Helix has an anti-inflammatory and antimicrobial effect.
+              </p>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section style="margin-top: 50px" class="bg-7 dnone">
+    <div style="  float: center; ">
+      <h2 class="center section6-text1" style="">Remove Warts & Skin Tags Safely At Home</h2>
+    </div>
+  </section>
+
+
+  <section style="" class="bg-8 dnone">
+    <div class="" id="works">
+      <div class="">
+
+        <div class="wrapper-rev">
+          <iframe width="780" height="380" src="6Xop90VGfCc.html" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <p class="center" style="margin-top: 50px"><a class="btn-orange proximanova" style="color:white" href="#order">BUY NOW</a></p>
+        <p>
+
+          <div style="" class="row section7-div">
+            <div class="howToUseSide">
+              <div style="" class="how">
+                <img class="step1" src="images/step1.png" alt="How to use" width="250px;">
+                <p style="font-family: 'Montserrat'; text-align: center; font-size: 20px; margin: 0 50px;">1. Squeeze
+                  a small amount of the cream onto your fingers.</p>
+              </div>
+            </div>
+            <div class="howToUseSide">
+              <div style="margin-top: 50px;" class="how">
+                <img class="step2" src="images/step2.png" alt="How to use" width="250px;">
+                <p style="font-family: 'Montserrat'; margin-top: 20px; text-align: center; font-size: 20px; margin: 0 50px;">
+                  2. Аpply externally to the affected areas 3 times a day.</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-s3">
+            <p style="" class="proximanova  justify section7-text"><b>Verrulon</b> is an easy to use <b>100 % natural
+                cream</b> for treating papillomas, warts and skin tags. Its main purpose is stopping the growth of the
+              undesirable formations on your body and at the same time, it successfully stimulates the natural boost
+              of immunity. It has been proved that this product blocks the replication of papillomas and its activity.
+            </p>
+          </div>
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <section id="reviews" style="margin-top: 50px;margin-bottom: 50px;" class="dnone">
+    <h2 style="" class=" center proximanova section8-text1">WHAT OUR HAPPY CUSTOMERS SAID</h2>
+    <div style="max-width: 1300px;" class="container">
+
+      <div class="row">
+        <div class="col-md-4 ">
+          <div class="ingred-box">
+
+
+
+            <h5>Dennis Rubiato, <script>
+                time(25)
+              </script>
+            </h5>
+            <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="font-size:14px" class="ingred-text ">Verified
+                purchase</span>
+            </p>
+            <p class="justify ingred-coment proximanova">The best product I have ever tested!</p>
+
+          </div>
+
+          <div class="ingred-box">
+
+            <h5>Eduardo Rotilles, <script>
+                time(29)
+              </script>
+            </h5>
+            <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text">Verified purchase</span>
+            </p>
+            <p class="justify ingred-coment proximanova"> Amazing effect only after a week of usage! Recommend!</p>
+
+
+          </div>
+
+          <div class="ingred-box">
+
+
+            <h5>Antonio Pin, <script>
+                time(34)
+              </script>
+            </h5>
+            <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text">Verified purchase</span>
+            </p>
+            <p class="justify ingred-coment proximanova">I had several skin tags on my shoulders, which fell down just
+              after three days of using the cream. I applied it 3 times a day, so 9 times total until the skin tags just
+              fell.</p>
+
+
+
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="ingred-box">
+
+            <h5>Carina Gapasinao, <script>
+                time(45)
+              </script>
+            </h5>
+            <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text">Verified purchase</span>
+            </p>
+            <p class="justify ingred-coment proximanova">Only for two weeks, it removed a large mole I had on my back!
+            </p>
+
+
+
+
+          </div>
+
+          <div class="ingred-box">
+
+            <h5>Emma A. Guan, <script>
+                time(54)
+              </script>
+            </h5>
+            <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text">Verified purchase</span>
+            </p>
+            <p class="justify ingred-coment proximanova">I was a bit skeptical at first because I had tested many other
+              mole remover creams, which turned to be useless. Verrulon definitely works!</p>
+
+
+          </div>
+
+          <div class="ingred-box">
+
+
+
+            <h5>John Dela Cruz, <script>
+                time(59)
+              </script>
+            </h5>
+            <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text">Verified purchase</span>
+            </p>
+            <p class="justify ingred-coment proximanova">What a remarkable cream! I am fascinated by the results!</p>
+
+
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="ingred-box">
+
+            <h5>Gilda Navales,<script>
+                time(61)
+              </script>
+            </h5>
+            <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text">Verified purchase</span>
+            </p>
+            <p class="justify ingred-coment proximanova">I had about ten skin tags on my body, which caused me great
+              discomfort. I used Verrulon only for 4 days and the skin tags were removed. </p>
+
+
+          </div>
+
+          <div class="ingred-box">
+
+            <h5>Lou Omar, <script>
+                time(62)
+              </script>
+            </h5>
+            <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text">Verified purchase</span>
+            </p>
+            <p class="justify ingred-coment proximanova">I wish I had found VERRULON sooner! What an amazing product!
+            </p>
+
+
+          </div>
+
+          <div class="ingred-box">
+
+            <h5>Antonio Villasin, <script>
+                time(66)
+              </script>
+            </h5>
+            <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text">Verified purchase</span>
+            </p>
+            <p class="justify ingred-coment proximanova">Fantastic product! </p>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+
+
+
+  <section id="review">
+    <div class="section_09 dnone">
+      <div class="wrapper-rev">
+        <h2 style="margin-bottom: 50px; font-family: 'Montserrat';">YOUR SATISFACTION IS OUR GREATEST REWARD</h2>
+        <img class="" src="images/testiasian.jpg" alt="" width="">
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section style="" class="bg-9 dnone">
+    <div style="background: ;">
+      <h2 style="text-align: center;font-size: 25px;padding-bottom: 20px;padding-top: 30px; font-family: 'Montserrat';">
+        SHIPPING AND PAYMENT</h2>
+      <div class="container">
+        <div class="row">
+          <div style="text-align: center;" class="col-md-4">
+            <figure class="snip1206">
+              <img style="margin-left: 40px;" src="images/1.png" alt="sample74">
+              <figcaption>
+                <h2 style="font-family: 'Montserrat';"><b>Delivery by mail within 1-7 days. Free shipping.</b></h2>
+                <!--  <p>Just makes people try to do everything at once.</p> -->
+              </figcaption>
+          </figure></div>
+          <div style="text-align: center;" class="col-md-4">
+            <figure class="snip1206 hover">
+              <img style="margin-left: 40px;width: 50%;" src="images/2.png" alt="sample69">
+              <figcaption>
+                <h2 style="font-family: 'Montserrat';"><b>No upfront payments!</b></h2>
+                <!-- <p>We'd invent machines that do things less efficiently.</p> -->
+              </figcaption>
+          </figure></div>
+          <div style="text-align: center;" class="col-md-4">
+            <figure class="snip1206">
+              <img style="margin-left: 40px;" src="images/3.png" alt="sample13">
+              <figcaption>
+                <h2 style="font-family: 'Montserrat';"><b>Payment is done on receipt of the order.</b></h2>
+                <!-- <p>To the machines and go play outside.</p> -->
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- mobile ver one -->
+
+  <nav style="background: #ffdb59;position: fixed;left: 0;top: 0;right: 0;z-index: 10;" class="navbar navbar-expand-md bgcolor-gray d-block d-md-none " id="sticky-main-navbar">
+    <div class="container">
+      <button onclick="mobbtn()" class="navbar-toggler sticky-button" data-target="" data-toggle="collapse" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars color-orange"></i>
+      </button>
+
+      <div style="margin-right: ;" class="order-now ">
+
+
+        <a class="btn blob-mob" style="border:1px solid white;background: #ff0000;border-radius: 5px; style=" font-family:="" 'montserrat'="" ;""="" href="#order">Order Now</a>
+      </div>
+      <div class="collapse navbar-collapse" id="main-navbar">
+
+        <ul style="width: 100%;" class="navbar-nav sticky-navbar">
+          <li style="border-bottom: 0.1px solid #747774;text-align: center;margin-top: 20px;" class="nav-item fancy-link2"><a style="default.htm" class="nav-link mob-nav-size proximanova" href="#home1"><b>HOME</b></a></li>
+          <li style="border-bottom: 0.1px solid #747774;text-align: center;" class="nav-item fancy-link2"><a style="default.htm" class="nav-link mob-nav-size proximanova" href="#about1"><b>ABOUT</b></a>
+          </li>
+          <li style="border-bottom: 0.1px solid #747774;text-align: center;" class="nav-item fancy-link2"><a style="default.htm" class="nav-link mob-nav-size proximanova" href="#work1"><b>HOW IT WORKS</b></a></li>
+          <li style="border-bottom: 0.1px solid #747774;text-align: center;" class="nav-item fancy-link2"><a style="default.htm" class="nav-link mob-nav-size proximanova" href="#reviews1"><b>REVIEWS</b></a></li>
+
+        </ul>
+        <ul class="navbar-nav ml-auto sticky-order-button">
+          <div class="order-now">
+            <a class="btn blob-mob" style="border:1px solid white;background: #e07a14; style=" font-family:="" 'montserrat'="" ;""="" href="#order">Order Now</a>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div style="margin-top: 50px;" id="home1" onclick="mobbtn1()" class="d-block d-md-none">
+
+    <div class="bg-1">
+
+      <div class="mob-margin">
+        <p style="position: relative;"><img src="images/mob-1.jpg" alt="" width="100%">
+          <span class="just-another-hand" style="position: absolute; top: 10px; left: 100px; right: 20px; text-align: right; font-size: 21px; color:#43730a; line-height: 25px; font-weight:600; font-family: 'Montserrat';">
+            SKIN TAG <br> AND MOLE REMOVER CREAM</span>
+          </p><p>
+      </p></div>
+
+      <div class="mob-margin">
+        <h2 style="" class="center h2-mob mob-margin text-white just-another-hand"><span style="font-size: 31px; color:#f31616; text-decoration: line-through; font-family: 'Montserrat';" class="just-another-hand"><x-oldprice>3780</x-oldprice> <x-currency>₱</x-currency> </span><br>
+          <span class="caroni-regular" style="color: #78de00;"> </span><span style="color:#43730a;font-size: 50px; font-family: 'Montserrat';"><x-newprice>1890</x-newprice>            <x-currency>₱</x-currency> <br> </span><span style="font-size: 70px;"><br></span> </h2>
+      </div>
+
+
+      <div style="margin-top: -100px;" class="center">
+        <p style="position: relative;"><a class="btn-red" style="color:white" href="#order">BUY NOW</a>
+          </p><p>
+      </p></div>
+
+      <div style="padding-bottom: 20px;" class="center">
+        <img class="icons2" src="images/icons2.png" alt="" width="80%">
+        <!--<img class="padding-mob" src="img/icons3.png" alt="" width="80%">-->
+      </div>
+
+
+    </div>
+
+
+
+    <div style="margin-top: 0px;" class="bg-3-mob center padding-mob">
+      <span class="" style=" top: 0px; left:0px;font-weight: 400; color:#43730a;font-size:20px; font-family: 'Montserrat';"><br>
+        <span style="font-weight: 600; color:#43730a;font-size:30px;">Verrulon - Deal with skin tag and moles</span>
+        <br> <br>✔ Аn effective completely natural remedy for removing moles and warts from the skin - this 100% safe
+        cream blocks the growth of warts, papillomas and leeks in the skin and at the same time strengthens the immune
+        system.
+        <br> <br>✔ Papillomas, warts, moles or as people often call them moles, leeks and other skin defects are
+        constant in the lives of humans. <br> <br>
+        ✔ All our life, our skin is tested and there are few people who are not affected by a single defect on their
+        bodies. <br> </span>
+    </div>
+
+
+
+    <div id="about1" style="margin-top: -20px;" class="bg-6-mob center padding-mob">
+
+      <h2 class=" proximanova  center h2-s3" style="font-weight: 600; color:#43730a;font-size:30px; font-family: 'Montserrat';">What is Skin Tag</h2>
+      <hr style="margin-top: -5px; margin-bottom: -5px; height: 1px;margin:20 auto;" size="10" color="#43730a" width="200px">
+
+      <div class="padding-mob d-flexi mob-margin">
+        <img class="" src="images/papi1.png" alt="" width="40%">
+        <img class="" src="images/papi2.png" alt="" width="40%">
+      </div>
+
+      <div class="padding-mob d-flexi mob-margin">
+        <img class="" src="images/papi5.png" alt="" width="40%">
+        <img class="" src="images/papi4.png" alt="" width="40%">
+      </div>
+
+      <p style="font-size:18px; font-weight: 600;" class="mob-p-size justify proximanova ">Papillomas, warts, nevuses,
+        or as people often call them moles, skin tags and other skin defects are constant companions of humans.
+        Throughout life, our skin is tested for strength and there are few people who would not have a single flaw on
+        their bodies.<br><br>
+
+        The appearance of the formations may be different, but one thing is common: in addition to physical
+        inconvenience and, possibly, pain, skin tags and moles can cause an inferiority complex and undermine
+        self-confidence so that psychological assistance is required.</p>
+
+    </div>
+
+
+    <!-- ingredients -->
+    <div class="ingredients">
+      <div style="margin-top:15px;" class=" d-flex justify-content-end wow-touch-about">
+        <!-- <h4 style="background:rgba(255, 74, 125,1)" class="section-header undefined">Ingredients We Use</h4> -->
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="center proximanova">The secret is in the ingredients!</h2>
+            <h6 class="center proximanova">Verrulon represents a unique combination of natural herbs and essential oils,
+              carefully selected from our experts that successfully copes with the formation of warts, papillomas and
+              skin tags.</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-4 ">
+            <div class="ingredient-item" data-toggle="collapse" data-target="#teatreeoil" aria-expanded="false" aria-controls="teatreeoil"><img src="images/ing1.jpg" alt="">
+              <p style="font-size:22px; margin-left: 80px;" class="text-center futura-std-medium fa proximanova">Tea
+                Tree Oil</p>
+              <span class="plus-icon"></span>
+            </div>
+            <div class="collapse" id="teatreeoil">
+              <div class="card card-body">
+                <p class="futura-std-medium proximanova">
+                  It has been confirmed that tea tree leaf oil inhibits the multiplication of many types of fungal
+                  infections. In the world there are practically no disinfectants with such a wide spectrum of action -
+                  therefore, tea tree oil is very actively used in cosmetology.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="ingredient-item" data-toggle="collapse" data-target="#juniperwoodoil" aria-expanded="false" aria-controls="juniperwoodoil"><img src="images/ing2.jpg" alt="">
+              <p style="font-size:22px; margin-left: 80px;" class="text-center futura-std-medium fa proximanova">Juniper
+                Wood Oil</p>
+              <span class="plus-icon"></span>
+            </div>
+            <div class="collapse" id="juniperwoodoil">
+              <div class="card card-body">
+                <p class="futura-std-medium proximanova">
+                  <strong>Juniper wood oil</strong> copes with almost all skin diseases, manifesting itself as a unique
+                  remedy for various types of eczema, papillomas, warts and skin tags.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="ingredient-item" data-toggle="collapse" data-target="#chelidoniummajus" aria-expanded="false" aria-controls="chelidoniummajus"><img src="images/ing3.jpg" alt="">
+              <p style="font-size:22px; margin-left: 80px;" class="text-center futura-std-medium fa proximanova">
+                Chelidonium Majus</p>
+              <span class="plus-icon"></span>
+            </div>
+            <div class="collapse" id="chelidoniummajus">
+              <div class="card card-body">
+                <p class="futura-std-medium proximanova">
+                  <strong>Chelidonium Majus </strong> has long been known for its great effect in removing papillomas,
+                  warts and skin tags.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="ingredient-item" data-toggle="collapse" data-target="#birchextract" aria-expanded="false" aria-controls="birchextract"><img src="images/ing4.jpg" alt="">
+              <p style="font-size:22px; margin-left: 80px;" class="text-center futura-std-medium fa proximanova">Birch
+                Extract</p>
+              <span class="plus-icon"></span>
+            </div>
+            <div class="collapse" id="birchextract">
+              <div class="card card-body">
+                <p class="futura-std-medium proximanova">
+                  <strong>Birch extract </strong> has antiseptic, antifungal properties, act on helminths, trichomonads
+                  and giardia. .
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="ingredient-item" data-toggle="collapse" data-target="#calamintha" aria-expanded="false" aria-controls="calamintha"><img src="images/ing5.jpg" alt="">
+              <p style="font-size:22px; margin-left: 80px;" class="text-center futura-std-medium fa proximanova">
+                Calamintha</p>
+              <span class="plus-icon"></span>
+            </div>
+            <div class="collapse" id="calamintha">
+              <div class="card card-body">
+                <p class="futura-std-medium proximanova">
+                  <strong>Calamintha </strong>- contains lentinan, this herb is used for treating skin tags and other
+                  skin imperfections.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="ingredient-item" data-toggle="collapse" data-target="#hederahelix" aria-expanded="false" aria-controls="hederahelix"><img width="450px;" src="images/ing6.jpg" alt="">
+              <p style="font-size:22px; margin-left: 80px;" class="text-center futura-std-medium fa proximanova">Hedera
+                Helix</p>
+              <span class="plus-icon"></span>
+            </div>
+            <div class="collapse" id="hederahelix">
+              <div class="card card-body">
+                <p class="futura-std-medium proximanova">
+                  <strong>Hedera Helix </strong> has an anti-inflammatory and antimicrobial effect.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--end ingredients -->
+
+
+
+
+    <div id="work1" style="padding-top: 20px; margin-top: 40px;" class="bg-8-mob center">
+
+      <h2 class=" proximanova  center h2-s3" style="font-weight: 400; color:#43730a;font-size:30px; margin-top: 0px; font-family: 'Montserrat';">Remove Warts
+        & Skin Tags Safely At Home</h2>
+
+      <div class="padding-mob d-flexi mob-margin">
+        <iframe width="320" height="200" src="6Xop90VGfCc.html" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <div style="" class="center">
+        <p style="position: relative;"><a class="btn-red" style="color:white" href="#order">BUY NOW</a>
+          </p><p>
+      </p></div>
+
+      <div class="padding-mob d-flexi mob-margin">
+        <img class="" src="images/step1.png" alt="" width="40%">
+        <img class="" src="images/step2.png" alt="" width="40%">
+      </div>
+      <p style="    font-size: 12px; font-weight: bold; margin-left: 10px; line-height: 30px; width: 95%; text-align: justify;" class=" justify proximanova padding-mob">
+        1. Squeeze a small amount of the cream onto your fingers. <br>
+        2. Аpply externally to the affected areas 3 times a day.</p>
+
+      <p style="font-size: 12px; margin-left: 10px; width: 95%; text-align: justify;" class=" justify proximanova padding-mob">
+        <b>Verrulon</b> is an easy to use <b>100 % natural cream</b> for treating papillomas, warts and skin tags. Its
+        main purpose is stopping the growth of the undesirable formations on your body and at the same time, it
+        successfully stimulates the natural boost of immunity. It has been proved that this product blocks the
+        replication of papillomas and its activity.</p>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- REVIEWS-->
+    <h2 style="" class="center h2-size-mob mob-margin proximanova">WHAT OUR HAPPY CUSTOMERS SAID</h2>
+
+    <div style="width: 85%;margin: 0 auto;" class="mob-margin">
+
+      <div class="ingred-box">
+
+
+
+        <p class="proximanova"><b>Dennis Rubiato, <script>
+              time(25)
+            </script></b></p>
+        <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="font-size:13px" class="ingred-text proximanova">Verified
+            purchase</span>
+        </p>
+        <p class="justify ingred-coment proximanova">The best product I have ever tested!</p>
+
+      </div>
+
+      <div class="ingred-box">
+
+        <p class="proximanova"><b>Eduardo Rotilles, <script>
+              time(29)
+            </script></b></p>
+        <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text proximanova">Verified purchase</span>
+        </p>
+        <p class="justify ingred-coment proximanova"> Amazing effect only after a week of usage! Recommend!</p>
+
+
+      </div>
+
+
+      <div class="ingred-box">
+
+        <p class="proximanova"><b>John Dela Cruz, <script>
+              time(34)
+            </script></b></p>
+        <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text proximanova">Verified purchase</span>
+        </p>
+        <p class="justify ingred-coment proximanova">What a remarkable cream! I am fascinated by the results!</p>
+
+
+
+
+      </div>
+
+      <div class="ingred-box">
+
+        <p class="proximanova"><b>Carina Gapasinao, <script>
+              time(45)
+            </script></b></p>
+        <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text proximanova">Verified purchase</span>
+        </p>
+        <p class="justify ingred-coment proximanova">Only for two weeks, it removed a large mole I had on my back! </p>
+
+
+
+
+      </div>
+
+      <div class="ingred-box">
+
+        <p class="proximanova"><b>Emma A. Guan, <script>
+              time(54)
+            </script></b></p>
+        <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text proximanova">Verified purchase</span>
+        </p>
+        <p class="justify ingred-coment proximanova">I was a bit skeptical at first because I had tested many other mole
+          remover creams, which turned to be useless. Verrulon definitely works!</p>
+
+
+      </div>
+
+
+      <div class="ingred-box">
+
+        <p class="proximanova"><b>Antonio Pin, <script>
+              time(59)
+            </script></b></p>
+        <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text proximanova">Verified purchase</span>
+        </p>
+        <p class="justify ingred-coment proximanova">I had several skin tags on my shoulders, which fell down just after
+          three days of using the cream. I applied it 3 times a day, so 9 times total until the skin tags just fell.</p>
+
+
+      </div>
+
+      <div class="ingred-box">
+
+        <p class="proximanova"><b>Gilda Navales, <script>
+              time(61)
+            </script></b></p>
+        <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text proximanova">Verified purchase</span>
+        </p>
+        <p class="justify ingred-coment proximanova">I had about ten skin tags on my body, which caused me great
+          discomfort. I used Verrulon only for 4 days and the skin tags were removed. </p>
+
+
+      </div>
+
+      <div class="ingred-box">
+
+        <p class="proximanova"><b>Lou Omar, <script>
+              time(62)
+            </script></b></p>
+        <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text proximanova">Verified purchase</span>
+        </p>
+        <p class="justify ingred-coment proximanova">I wish I had found VERRULON sooner! What an amazing product!</p>
+
+
+      </div>
+
+      <div class="ingred-box">
+
+        <p class="proximanova"><b>Antonio Villasin, <script>
+              time(66)
+            </script></b></p>
+        <p class="mb-0"><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><i class="rating-stars fa fa-star"></i><span style="" class="ingred-text proximanova">Verified purchase</span>
+        </p>
+        <p class="justify ingred-coment proximanova">Fantastic product! </p>
+
+
+      </div>
+
+
+    </div>
+    <!-- end reviews -->
+
+
+
+
+    <h2 class=" center" style="font-size: 30px; font-weight: 400; margin-bottom: 20px; margin-top: 80px; font-family: 'Montserrat';">YOUR
+      SATISFACTION IS OUR GREATEST REWARD</h2>
+    <div style="margin-top:-20px;">
+      <img src="images/mpbcollageasian.jpg" alt="" width="100%">
+    </div>
+
+    <div>
+      <h2 style="text-align: center;font-size: 25px;margin-bottom: 30px;padding-top: 30px; font-family: 'Montserrat';">
+        SHIPPING AND PAYMENT</h2>
+
+      <img style="margin-left: 80px;" src="images/1.png" alt="sample74" width="200px">
+      <h6 style="font-family: 'Montserrat'; text-align:center; font-size: 14px; margin-top: 10px;"><b>Delivery by mail
+          within 1-7 days. Free shipping.</b></h6>
+
+      <img style="margin-left: 80px;width: 50%;" src="images/2.png" alt="sample69">
+      <h6 style="font-family: 'Montserrat'; text-align:center; font-size: 14px;"><b>No upfront payments!</b></h6>
+
+      <img style="margin-left: 80px;" src="images/3.png" alt="sample13" width="200px">
+      <h6 style="font-family: 'Montserrat';text-align:center; font-size: 14px;"><b>Payment is done on receipt of the
+          order.</b></h6>
+
+    </div>
+
+  </div>
+
+
+  <section onclick="mobbtn1()" id="order">
+    <div id="order" class="section_11">
+      <div class="">
+        <div class="wrapper zoom ">
+          <h2></h2>
+          <div class="content ">
+            <h4 class="center"> <b>This Is Our Special Offer For You! </b></h4>
+
+            <img id="order1" class="product small-pic1 pic-form dnone" src="images/prod-ver.png" width="" alt="">
+
+            <div class="box">
+              <div style="background: rgb(255 218 101);margin-bottom: 10px;border-radius: 20px;border: 1px solid red;" class="formBox">
+                <!--<h3>Virustop S7</h3>-->
+                <h4 class="red">Hot deal! 50% Discount!</h4>
+                <!-- <p class="red">50% DISCOUNT</p> -->
+                <a class="countbox" href="#form-index2">
+                  <div class="toend">TIME UNTIL HOT DEAL ENDS:</div>
+                  <div class="countdown_box">
+                    <p class="order-countdown-hours" id="hours3"></p>
+                    <p class="order-countdown-minutes" id="minutes3"></p>
+                    <p class="order-countdown-seconds" id="seconds3"></p>
+                  </div>
+                  <div class="time">
+                    <span>Hours</span>
+                    <span>Minutes</span>
+                    <span>Seconds</span>
+                  </div>
+                </a>
+                <div class="prices">
+                  <p> Old Price <span class="red"><x-oldprice>3780</x-oldprice> <x-currency>₱</x-currency></span></p>
+                  <p> New Price <span class="green"><x-newprice>1890</x-newprice> <x-currency>₱</x-currency></span></p>
+                </div>
+
+                <form name="form-index" id="form-index2" class="orderform" action="https://healthbestblog.space/cpatl/api.php" method="post">
+
+                      <input name="csrf_token" type="hidden" value="b5a9ffd09f9a1e1a5d784f87453fae00:1609722766">
+    <select name="offer" class="form-control country_chang" style="display: none;">
+        <option data-country-code="PH" selected="selected" value="21373">
+            Филиппины        </option>
+    </select>
+
+                      <input class="zoom" id="shipping_fname2" type="text" name="name" required placeholder="First Name & Last Name" value="">
+                  <input class="zoom" id="shipping_fname2" type="tel" name="phone" required placeholder="Mobile Number" value="">
+
+
+                  <button type="submit">rush my order</button>
+                  <br class="clear">
+                        <input type="hidden" name="stream_hid" value="bVrUdQav">
+      <input type="hidden" name="offer_id" value="5363">
+
+      
+      <input type="hidden" name="country" value="PH"> 
+
+      <input type="hidden" name="sid1" value="alex">
+      <input type="hidden" name="sid2" value="alex2">
+      <input type="hidden" name="sid3" value="alex3">
+      <input type="hidden" name="redirect_url" value="https://amazinghealth.github.io/germitox-ita/success/index.html">
+                </form>
+
+                <img class="stamp" src="images/dual-medals.png" alt="" width="200">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- mobile ver two-->
+
+  <section style="background: white;" class="d-block d-md-none ">
+
+
+    <div style="background: ; margin-top:-5px" class="bg-10-mob footer">
+
+      <div class="blog-area blog-page section-padding dark-bg">
+        <div class="container">
+          <div style="" class="row">
+
+            <div style=" margin: 20px;" class="col-sm-6">
+              <div class="widget-row with-centered-content">
+                <div class="" style="margin-top: 0px; margin-left: 0px;">
+                  <div class="text-widget-content">
+                    <p style="text-align: center; line-height: 1.6; margin-bottom: 0rem;"><span style="font-size: 20px; color: #e07a14; font-family: 'Montserrat';">ABOUT Verrulon</span></p>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-top: -5px; margin-bottom: -5px; height: 2px; margin:0 auto;" color="#e07a14" width="">
+              <div class="widget-row with-centered-content">
+                <div class="" style="margin-top: 3%; margin-left: 0%;">
+                  <!-- <img src="img/logo.png" alt="" width="50%" style="margin: 10px auto;"> -->
+                  <div class="text-widget-content">
+                    <p style="text-align: justify; line-height: 1.2;"><span style="color: black; font-size: 12px; font-weight: 600; font-family: 'Montserrat';">VERRULON -
+                        SKIN TAG AND MOLE REMOVER CREAM
+                        REMOVER CREAM</span></p>
+                    <p style="text-align: justify; line-height: 1.2;"><span style="color: black; font-size: 14px; font-family: 'Montserrat';">Аn effective completely
+                        natural remedy for removing moles and warts from the skin - this 100% safe cream blocks the
+                        growth of warts, papillomas and leeks in the skin and at the same time strengthens the immune
+                        system</span></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div style="margin:20px;" class="col-sm-6">
+              <div class="widget-row with-centered-content">
+                <div class="" style="margin-top: 0px; margin-left: 0px;">
+                  <div class="text-widget-content">
+                    <p style="text-align: center; line-height: 1.6; margin-bottom: 0rem;"><span style="font-size: 20px; color: #e07a14; font-family: 'Montserrat';">MENU</span></p>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-top: -5px; margin-bottom: -5px; height: 2px; margin:0 auto;" color="#e07a14" width="">
+
+              <div class="">
+                <div class="" style="margin-top: 2.71739%; margin-left: 0px;">
+                  <div class="text-widget-content">
+                    <div style=" text-align: center; "><a href="#home1" style="color: black; font-family: 'Montserrat'; font-size: 16px;">Home</a></div>
+                    <div style=" text-align: center; "><a href="#about1" style="color: black; font-family: 'Montserrat'; font-size: 16px;">About</a></div>
+                    <div style=" text-align: center; "><a href="#works1" style="color: black; font-family: 'Montserrat'; font-size: 16px;">How It Works</a></div>
+                    <div style=" text-align: center; "><a href="#reviews1" style="color: black; font-family: 'Montserrat'; font-size: 16px;">Reviews</a></div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin:20px;" class="col-sm-2">
+              <div class="">
+                <div class="">
+                  <div class="text-widget-content">
+                    <p style="text-align: center; line-height: 1.6; margin-bottom: 0rem;"><span style="font-size: 20px; color: #e07a14;">INFORMATION</span></p>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-top: -5px; margin-bottom: -5px; height: 2px; margin:0 auto;" color="#e07a14" width="">
+
+              <div class="">
+                <div class="" style="margin-top: 2.71739%; margin-left: 0px;">
+                  <div class="text-widget-content">
+                    <div style=" text-align: center; "><a href="privacy.php" style="color: black; font-family: 'Montserrat'; font-size: 16px;">Privacy Policy</a></div>
+                    <div style=" text-align: center; "><a href="termsandCondition.php" style="color: black; font-family: 'Montserrat'; font-size: 16px;">Terms And Condition</a></div>
+                    <div style=" text-align: center; "><a href="refunds.php" style="color: black; font-family: 'Montserrat'; font-size: 16px;">Refunds</a></div>
+                    <div style=" text-align: center; "><a href="disclaimer.php" style="color: black; font-family: 'Montserrat'; font-size: 16px;">Disclaimer</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+
+  <footer style="margin-top:-180px;" class="bg-10 footer dnone">
+
+    <div class="blog-area blog-page section-padding dark-bg">
+      <div class="container">
+        <div style="flex-wrap: nowrap;" class="row">
+
+          <div style="margin:20px; margin-top:200px" class="col-sm-6">
+            <div class="widget-row with-centered-content">
+              <div class="" style="margin-top: 0px; margin-left: 0px; ">
+                <div class="text-widget-content">
+                  <p style="text-align: center; line-height: 1.6;"><span style="font-size: 20px; color: #e07a14;">ABOUT
+                      VERRULON</span></p>
+                </div>
+              </div>
+            </div>
+            <hr style="margin-top: -5px; margin-bottom: -5px; height: 2px; margin:0 auto;" color="#e07a14" width="">
+            <div class="widget-row with-centered-content">
+              <div class="" style="margin-top: 3%; margin-left: 0%;">
+                <!-- <img src="img/logo.png" alt="" width="50%" style="margin: 10px auto;"> -->
+                <div class="text-widget-content">
+                  <p style="text-align: justify; line-height: 1.2;"><span style="color: black; font-family: 'Montserrat'; font-size: 14px; font-weight: 600;">VERRULON -
+                      SKIN TAG AND MOLE
+                      REMOVER CREAM</span></p>
+                  <p style="text-align: justify; line-height: 1.2;"><span style="color: black; font-family: 'Montserrat'; font-size: 14px;">Аn effective completely natural
+                      remedy for removing moles and warts from the skin - this 100% safe cream blocks the growth of
+                      warts, papillomas and leeks in the skin and at the same time strengthens the immune system</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="margin:20px; margin-top:200px" class="col-sm-6">
+            <div class="widget-row with-centered-content">
+              <div class="" style="margin-top: 0px; margin-left: 0px;">
+                <div class="text-widget-content">
+                  <p style="text-align: center; line-height: 1.6;"><span style="font-size: 20px; color: #e07a14;">MENU</span></p>
+                </div>
+              </div>
+            </div>
+            <hr style="margin-top: -5px; margin-bottom: -5px; height: 2px; margin:0 auto;" color="#e07a14" width="">
+
+            <div class="">
+              <div class="" style="margin-top: 2.71739%; margin-left: 0px;">
+                <div class="text-widget-content">
+                  <div style=" text-align: center; "><a href="#home" style="color: black; font-family: 'Montserrat'; font-size: 16px;">Home</a></div>
+                  <div style=" text-align: center; "><a href="#about" style="color: black; font-family: 'Montserrat'; font-size: 16px;">About</a></div>
+                  <div style=" text-align: center; "><a href="#works" style="color: black; font-family: 'Montserrat'; font-size: 16px;">How It Wors</a></div>
+                  <div style=" text-align: center; "><a href="#reviews" style="color: black; font-family: 'Montserrat'; font-size: 16px;">Reviews</a></div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!--FOOER AREA END-->
+
+
+  <nav style="background: #ffdb59;padding-left:;padding-top: 10px;padding-bottom: 10px;" class="center fixed-top d-none d-lg-block d-xl-none">
+
+
+    <a style="color: white;" class="nav-size-mob1  proximanova" href="#home"><b>HOME</b></a>
+    <a style="color: white;" class="nav-size-mob1 proximanova" href="#about"><b>ABOUT</b></a>
+
+    <!--  <a style="color: white;" class="nav-size-mob1 " href="#how"><b>INGREDIENTS</b></a> -->
+    <a style="color: white;" class="nav-size-mob1 proximanova" href="#works">HOW IT WORKS</a>
+    <a style="color: white;" class="nav-size-mob1 proximanova" href="#reviews"><b>REVIEWS</b></a>
+
+    <a style="color: white;" class="nav-size-mob1 proximanova" href="#faq"><b>FAQ</b></a>
+    <a class="btn blob" style="border:1px solid white;background: red; font-family: 'Montserrat'" href="#order">Order
+      Now</a>
+  </nav>
+  <nav style="background: #ffdb59;padding-left:;padding-top: 10px;padding-bottom: 10px;" class="center fixed-top d-none d-md-block d-lg-none">
+
+
+    <a style="margin-left: 10px;color: white;" class="nav-size-mob proximanova" href="#home"><b>HOME</b></a>
+    <a style="color: white;" class="nav-size-mob proximanova" href="#about"><b>ABOUT</b></a>
+
+    <!--   <a style="color: white;" class="nav-size-mob" href="#how"><b>INGREDIENTS</b></a> -->
+    <a style="color: white;" class="nav-size-mob proximanova" href="#works">HOW IT WORKS</a>
+    <a style="color: white;" class="nav-size-mob proximanova" href="#reviews"><b>REVIEWS</b></a>
+
+    <a style="color: white;" class="nav-size-mob proximanova" href="#faq"><b>FAQ</b></a>
+    <a class="btn blob" style="border:1px solid white;background: red; font-family: 'Montserrat' " href="#order">Order
+      Now</a>
+  </nav>
+
+
+  <script src="js/jquery.min_1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+
+  <script type="text/javascript">
+    function mobbtn() {
+      $("#main-navbar").slideToggle(700);
+    }
+  </script>
+  <script type="text/javascript">
+    function mobbtn1() {
+      $("#main-navbar").slideUp(700);
+    }
+    $(document).ready(function () {
+      $('#faq,#faq2').mouseenter(function () {
+        $('#faq,#faq2').text('Frequently Asked Questions');
+      });
+    });
+    $(document).ready(function () {
+      $('#faq,#faq2').mouseleave(function () {
+        $('#faq,#faq2').text('FAQ');
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#btn-text,#btn-text2').mouseenter(function () {
+        $('#btn-text,#btn-text2').text('50% DISCOUNT!', );
+      });
+    });
+    $(document).ready(function () {
+      $('#btn-text,#btn-text2').mouseleave(function () {
+        $('#btn-text,#btn-text2').text('ORDER NOW');
+      });
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(".hover").mouseleave(
+      function () {
+        $(this).removeClass("hover");
+      }
+    );
+  </script>
+
+
+  <script>
+    $(document).ready(function () {
+      $(".product-single").click(function () {
+        $('.product-single').removeClass('selectedBox');
+        $(this).addClass('selectedBox');
+
+      });
+
+
+      $(".toBoxes").click(function () {
+        $('html, body').animate({
+          scrollTop: $(".anchor").offset().top
+        }, 600);
+      });
+    });
+  </script>
+  <center style="margin: 30px auto"><p>OOO "OSTROV PRODAZH" OGRN: 1197746695530 VAT: 7708365555</p>
+<p>129090, Moscow, pereulok Zhivarev, house 8, stroenie 3, flat 16 email: ostrov.prodazh@mail.com Skype: ostrov.prodazh@mail.com</p> 
+
+
+    
+            <p class="conf-link doclinks">
+        <a class="nav-link" href="" onclick="window.open('/policy_en.php'); return false;">Privacy Policy</a>
+          |
+        <a class="nav-link" href="" onclick="window.open('/terms_en.php'); return false;">Terms & Conditions</a>
+      </p>
+      
+    
+</center>
+</body>
+
+</html>
